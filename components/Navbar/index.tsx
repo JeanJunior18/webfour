@@ -5,14 +5,23 @@ import Burguer from './Burguer';
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;  
+  justify-content: space-between;
+
+  .logo {
+    margin: 1rem;
+    width: 5rem;
+  }  
+
+  .logo img {
+    width: 100%;
+  }
 `
 
 const Navbar: React.FC = () => {
   return (
     <Nav>
       <div className="logo">
-        Webfour
+        <img src="/logo01.png" alt="WebFour"/>
       </div>
 
       <Burguer />

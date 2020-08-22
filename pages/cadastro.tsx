@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { FormHandles, SubmitHandler } from '@unform/core';
 import { Form } from '@unform/web';
-import Input from './components/unform/Input';
-import Navbar from './components/Navbar';
+import Input from '../components/unform/Input';
+import Navbar from '../components/Navbar';
 import { GoogleMap, Marker } from 'react-google-maps';
 
 // import { Container } from './styles';
