@@ -3,17 +3,40 @@ import { FormHandles, SubmitHandler } from '@unform/core';
 import { Form } from '@unform/web';
 import Input from '../components/unform/Input';
 import Navbar from '../components/Navbar';
-import { GoogleMap, Marker } from 'react-google-maps';
+import MapView from '../components/MapView';
+import styled from 'styled-components';
 
-// import { Container } from './styles';
+const Container = styled.div`
+  /* background: black;s */
+  
+
+  form {
+    background: #a1a1a1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  form input {
+    
+  }
+
+   .map {
+    background: #b2b2b2;
+    height: 15rem;
+    width: 100%;
+  }
+`;
+
 
 interface FormData {
   fullname: string
 }
 
+
 const Cadastro: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  // const []
 
   const handleSubmit: SubmitHandler<FormData> = data => {
     console.log(data)
@@ -22,23 +45,23 @@ const Cadastro: React.FC = () => {
   return (
     <>
     <Navbar />
-    <div>Cadastro Page</div>
+    <Container>
+      <div>Cadastro Page</div>
 
-    <GoogleMap
-    defaultCenter={{lat:-4.4607648,lng:-43.8902643}}
-    defaultZoom={15.13}
-    >
+    <div className="map">
+      <MapView />
+    </div>
 
-    </GoogleMap>
 
-    <Form ref={formRef} onSubmit={handleSubmit}>
-      <Input name="fullname" label="Nome Completo" />
-      <Input name="cpf" label="CPF" />
-      <Input name="address" label="Endereço" />
-      <Input name="neighborhood" label="Bairro" />
+      <Form ref={formRef} onSubmit={handleSubmit}>
+        <Input name="fullname" label="Nome Completo" />
+        <Input name="cpf" label="CPF" />
+        <Input name="address" label="Endereço" />
+        <Input name="neighborhood" label="Bairro" />
 
-      <button type="submit">Enviar</button>
-    </Form>
+        <button type="submit">Enviar</button>
+      </Form>
+    </Container>
   </>
   );
 }
