@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import GoogleMapReact, { ClickEventValue } from 'google-map-react';
 
-// import { Container } from './styles';
+interface MapData {
+  setState?: any
+}
+
 
 const Marker = () => <span>X</span> 
 
-const MapView: React.FC = () => {
-  const [marker, setMarker] = useState({lat: 0, lng: 0});
+const MapView: React.FC<MapData> = ( { setState } ) => {
+  const [marker, setMarker] = useState(null);
 
   const handleClick = (e: ClickEventValue) => {
     const { lat, lng } = e;
-    console.log(lat, lng)
     setMarker({lat, lng})
+    setState({lat, lng})
   }
 
   return (
@@ -22,10 +25,10 @@ const MapView: React.FC = () => {
       onClick={handleClick}
       fullscreenControl={false}
     >
-      <Marker 
+      {marker && <Marker 
         lat={marker.lat}
         lng={marker.lng}
-      />
+      />}
     </GoogleMapReact>
   );
 }
